@@ -134,7 +134,8 @@ func (h *Handler) ServeCreateAlert(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if strings.Contains(summary, "[Recovered]") {
-		summary = strings.ReplaceAll(summary, "[Recovered]", "") status = alert.StatusClosed
+		summary = strings.ReplaceAll(summary, "[Recovered]", "")
+		status = alert.StatusClosed
 	}
 
 	a := &alert.Alert{
