@@ -129,6 +129,14 @@ func (h *Handler) ServeCreateAlert(w http.ResponseWriter, r *http.Request) {
 	summary = validate.SanitizeText(summary, alert.MaxSummaryLength)
 	details = validate.SanitizeText(details, alert.MaxDetailsLength)
 
+	if strings.Contains(summary, "[Triggered]") {
+		summary = strings.ReplaceAll(summary, "[Triggered]", "")
+	}
+
+	if strings.Contains(summary, "[Recovered]") {
+		summary = strings.ReplaceAll(summary, "[Recovered]", "") status = alert.StatusClosed
+	}
+
 	a := &alert.Alert{
 		Summary:   summary,
 		Details:   details,

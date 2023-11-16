@@ -26,7 +26,7 @@ LD_FLAGS+=-X github.com/target/goalert/version.gitVersion=$(GIT_VERSION)
 LD_FLAGS+=-X github.com/target/goalert/version.gitTreeState=$(GIT_TREE)
 LD_FLAGS+=-X github.com/target/goalert/version.buildDate=$(BUILD_DATE)
 
-IMAGE_REPO=docker.io/goalert
+IMAGE_REPO=gcr.io/kitt-220208
 IMAGE_TAG=$(GIT_VERSION)
 
 CONTAINER_TOOL:=$(shell which podman || which docker || exit 1)
@@ -66,7 +66,7 @@ container-demo:  container-demo-amd64 container-demo-arm container-demo-arm64
 ifeq ($(PUSH),1)
 	podman manifest push --all $(IMAGE_REPO)/demo:$(IMAGE_TAG) docker://$(IMAGE_REPO)/demo:$(IMAGE_TAG)
 endif
-container-goalert:  container-goalert-amd64 container-goalert-arm container-goalert-arm64
+container-goalert:  container-goalert-arm64
 ifeq ($(PUSH),1)
 	podman manifest push --all $(IMAGE_REPO)/goalert:$(IMAGE_TAG) docker://$(IMAGE_REPO)/goalert:$(IMAGE_TAG)
 endif
