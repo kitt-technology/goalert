@@ -30,7 +30,7 @@ IMAGE_REPO=gcr.io/kitt-220208
 IMAGE_TAG=$(GIT_VERSION)
 
 CONTAINER_TOOL:=$(shell which podman || which docker || exit 1)
-PUSH:=0
+PUSH:=1
 
 container-goalert-manifest:
 	podman manifest rm $(IMAGE_REPO)/goalert:$(IMAGE_TAG) &>/dev/null || true

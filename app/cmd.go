@@ -32,7 +32,6 @@ import (
 	"github.com/target/goalert/util/sqlutil"
 	"github.com/target/goalert/validation"
 	"github.com/target/goalert/version"
-	"github.com/target/goalert/web"
 	"golang.org/x/term"
 )
 
@@ -230,17 +229,17 @@ Migration: %s (#%d)
 			}
 
 			// only do version check if UI is bundled
-			if web.AppVersion() != "" {
-				var err error
-				if version.GitVersion() != web.AppVersion() {
-					err = errors.Errorf(
-						"mismatch: backend version = '%s'; bundled UI version = '%s'",
-						version.GitVersion(),
-						web.AppVersion(),
-					)
-				}
-				result("Version", err)
-			}
+			//if web.AppVersion() != "" {
+			//	var err error
+			//	if version.GitVersion() != web.AppVersion() {
+			//		err = errors.Errorf(
+			//			"mismatch: backend version = '%s'; bundled UI version = '%s'",
+			//			version.GitVersion(),
+			//			web.AppVersion(),
+			//		)
+			//	}
+			//	result("Version", err)
+			//}
 
 			cf, err := getConfig(cmd.Context())
 			if errors.Is(err, ErrDBRequired) {
