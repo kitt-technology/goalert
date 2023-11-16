@@ -1,3 +1,13 @@
+# Kitt fork of GoAlert
+
+We've forked it in case we want to change any features. 
+
+I've added a thing that lets it integrate with datadog better.
+
+To build it run `make container-goalert`. This will build it and push it to gcr.
+
+You'll need podman, docker, make, go installed to build it.
+
 # GoAlert
 
 GoAlert provides on-call scheduling, automated escalations and notifications (like SMS or voice calls) to automatically engage the right person, the right way, and at the right time.
